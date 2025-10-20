@@ -1,0 +1,18 @@
+Folder yang berisi data - data dummy
+
+Contoh penulisan data dummy 
+
+const data = [
+    {
+        nama-umkm:,
+        deskripsi-umkm:,
+        alamat:,
+        produk: [
+            {
+                nama-produk:,
+                harga-produk:,
+                foto: ["link"]
+            }
+        ]
+    }
+];

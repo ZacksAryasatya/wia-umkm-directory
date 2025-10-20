@@ -1,0 +1,22 @@
+Cara bikin component dan reusable component 
+
+1. Cara bikin component dasar 
+
+export function NamaComponent() {
+    return (
+        <div>
+        // tulis elemen - elemen html disini
+        </div>
+    )
+};
+
+2. Cara bikin reusable component
+
+// parameter isi sesuai kebutuhan
+export function NamaComponent({text, warna, onPresed}) {
+    return (
+        <div>
+        <button className='warna' onClick={onPresed()}>{text}</button>
+        </div>
+    )
+}
