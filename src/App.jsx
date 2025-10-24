@@ -1,11 +1,12 @@
-import './App.css'
+import './App.css';
+import Layout from './layout/layout-main';
+import HomePage from './pages/pages-homepage';
 
 function App() {
 
   return (
-    <h1 className='text-lg-center text-uppercase'>Hello Worlds</h1>
-    <p></p>
+    <HomePage />
   )
 }
 
-export default App
+export default App;
