@@ -2,7 +2,7 @@ import { FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 
 function UmkmCard() {
   return (
-    <div className="bg-white rounded-[30px] shadow-md overflow-hidden w-full max-w-sm mx-auto border border-gray-100 hover:scale-105 hover:-translate-y-2 hover:shadow-xl duration-500">
+    <div className="bg-white rounded-[30px] shadow-md overflow-hidden w-full max-w-sm mx-auto border border-gray-100 hover:scale-105 hover:-translate-y-2 hover:shadow-xl duration-500 cursor-pointer">
       <img
         src="https://tse4.mm.bing.net/th/id/OIP.F4GKxk78V3gsH5aDQfAxTQHaEQ?pid=Api&P=0&h=180"
         alt="Foto UMKM"

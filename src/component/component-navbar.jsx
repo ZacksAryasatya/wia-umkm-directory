@@ -29,12 +29,13 @@ function Navbar() {
         className={`
           lg:flex lg:items-center lg:z-auto lg:static lg:w-auto lg:opacity-100
           z-10 absolute bg-white w-full left-0 transition ease-in-out duration-250 
-          ${isMenuOpen ? "top-15 opacity-100 shadow" : "top-[-490px] opacity-0"} 
+          lg:shadow-none
+          ${isMenuOpen ? "top-15 opacity-100 shadow-md" : "top-[-490px] opacity-0"} 
         `}
       >
         <li className="lg:mx-5 my-3 lg:my-0 ml-6">
           <a
-            href="#"
+            href="/"
             className="font-display text-[#486284] hover:text-[#012167] hover:font-bold duration-300"
             onClick={toggleMenu}
           >
@@ -43,8 +44,8 @@ function Navbar() {
         </li>
         <li className="lg:mx-5 my-3 lg:my-0 ml-6">
           <a
-            href="#"
-            className="font-display text-[#486284] hover:text-[#012167] hover:font-bold duration-300"
+            href="/daftar-umkm"
+          className="font-display text-[#486284] hover:text-[#012167] hover:font-bold duration-300"
             onClick={toggleMenu}
           >
             Daftar UMKM
