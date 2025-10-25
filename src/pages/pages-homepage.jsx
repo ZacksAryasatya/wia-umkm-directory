@@ -30,12 +30,12 @@ function HomePage() {
             unik, serta bantu mereka tumbuh lebih besar. Semua dimulai dari satu
             klik.
           </p>
-          <a href="#umkmSection">
-            {/* <button className="bg-[#2563EB] hover:bg-[#1E4FC3] text-white text-[15px] font-semibold py-3 px-8 rounded-full mt-6 transition-all">
-              Lihat UMKM Sekitar
-            </button> */}
-            <Button marginTop={'mt-6'} text={'Lihat UMKM Sekitar'} variant="filled"/>
-          </a>
+          <Button
+            marginTop={"mt-6"}
+            text={"Lihat UMKM Sekitar"}
+            variant="filled"
+            href={"#umkmSection"}
+          />
         </div>
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <img
@@ -50,7 +50,13 @@ function HomePage() {
         id="umkmSection"
         className="bg-white shadow-inner rounded-t-[35px] mt-10 px-6 lg:px-[100px] py-14"
       >
-        <CategoryBar active={active} onChange={(item) => {setActive(item)}} categories={kategori}/>
+        <CategoryBar
+          active={active}
+          onChange={(item) => {
+            setActive(item);
+          }}
+          categories={kategori}
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center mt-10">
           {[...Array(6)].map((_, index) => (
@@ -58,8 +64,12 @@ function HomePage() {
           ))}
         </div>
         <div className="flex justify-center mt-10">
-
-          <Button marginTop={'mt-6'} text={'Lihat Semua'} variant="rounded"/>
+          <Button
+            marginTop={"mt-6"}
+            text={"Lihat Semua"}
+            variant="rounded"
+            href={"/daftar-umkm"}
+          />
         </div>
       </section>
 
@@ -73,7 +83,7 @@ function HomePage() {
             Gabung bersama ratusan UMKM lainnya dan jadikan bisnismu lebih mudah
             ditemukan oleh pelanggan di sekitarmu.
           </p>
-          <Button text={'Daftarkan Usaha Anda'} marginTop={'mt-6'}/>
+          <Button text={"Daftarkan Usaha Anda"} marginTop={"mt-6"} />
         </div>
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <img

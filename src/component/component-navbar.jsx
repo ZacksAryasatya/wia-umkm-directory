@@ -13,7 +13,7 @@ function Navbar() {
     <nav className="bg-white shadow lg:py-5 lg:px-[100px] p-5 lg:flex lg:justify-between lg:items-center fixed top-0 w-full z-50">
       <div className="flex justify-between items-center">
         <span className="text-2xl font-bold uppercase text-[#1B54D0] font-display cursor-pointer">
-          umkm
+          <a href="/">UMKM</a>
         </span>
 
         <span className="text-3xl cursor-pointer lg:hidden block t">

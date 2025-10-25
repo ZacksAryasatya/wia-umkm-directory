@@ -3,6 +3,7 @@ import Layout from "../layout/layout-main.jsx";
 import CategoryBar from "../component/component-category-bar.jsx";
 import { useState } from "react";
 import UmkmCard from "../component/component-umkm-card.jsx";
+import { Link } from "react-router-dom";
 
 function DaftarUmkm() {
   const [active, setActive] = useState("Semua");
@@ -25,7 +26,7 @@ function DaftarUmkm() {
           w-full overflow-x-visible
         "
       >
-        <div className="flex items-center w-full max-w-[850px] bg-[#F5F7FA] border border-[#E2E8F0] rounded-full px-5 py-2 shadow-sm mb-6">
+        <div className="flex items-center w-full max-w-[850px] bg-[#F5F7FA] border border-[#E2E8F0] rounded-full px-5 py-3 shadow-sm mb-6">
           <FiSearch className="text-gray-400 text-lg" />
           <input
             type="text"

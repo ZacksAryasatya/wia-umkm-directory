@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import DaftarUmkm from "./pages/pages-daftar-umkm";
 import HomePage from "./pages/pages-homepage";
+import DetailUmkm from "./pages/pages-detail-umkm";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/daftar-umkm" element={<DaftarUmkm />} />
+        <Route path="/umkm" element={<DetailUmkm />} />
       </Routes>
     </BrowserRouter>
   );

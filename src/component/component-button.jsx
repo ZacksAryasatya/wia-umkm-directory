@@ -4,6 +4,7 @@ function Button({
   onClick,
   className = "",
   marginTop,
+  href,
 }) {
   const baseStyle = `
     text-[15px] font-semibold py-3 px-8 rounded-full transition-all duration-300 cursor-pointer ${marginTop}
@@ -19,7 +20,7 @@ function Button({
       onClick={onClick}
       className={`${baseStyle} ${variantStyle} ${className}`}
     >
-      {text}
+      <a href={href}>{text}</a>
     </button>
   );
 }
