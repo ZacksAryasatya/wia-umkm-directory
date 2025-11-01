@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function UmkmCard({ fotoUmkm, namaUmkm, deskripsi, location, noHp}) {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/umkm');
+    navigate('/detail-umkm');
   }
   return (
     <div
@@ -34,11 +34,11 @@ function UmkmCard({ fotoUmkm, namaUmkm, deskripsi, location, noHp}) {
         </p>
 
         <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 border-t border-gray-200 pt-3">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <FaMapMarkerAlt className="text-blue-500" />
             <span>{location || "Kecamatan, Kota"}</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <FaWhatsapp className="text-green-500" />
             <span>{noHp || "+62 XXX-XXX-XX"}</span>
           </div>

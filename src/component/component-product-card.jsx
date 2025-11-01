@@ -1,6 +1,6 @@
 function ProductCard({fotoProduct, namaProduct, hargaProduct, deskripsiProduct}) {
   return (
-    <div className="bg-white rounded-2xl border border-[#E5E7EB] lg:w-[250px] w-[1000px] mb-5 max-w-xs shadow-sm overflow-hidden hover:scale-100 hover:-translate-y-1 hover:shadow-xl duration-500 cursor-pointer">
+   <div className="bg-white rounded-[30px] border border-[#E5E7EB] w-full max-w-[350px] shadow-md overflow-hidden hover:-translate-y-1 hover:shadow-xl transition duration-300 cursor-pointer">
       <img
         src={fotoProduct || "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="}
         alt="product umkm"

@@ -5,9 +5,10 @@ function Button({
   className = "",
   marginTop,
   href,
+  children, 
 }) {
   const baseStyle = `
-    text-[15px] font-semibold py-3 px-8 rounded-full transition-all duration-300 cursor-pointer ${marginTop}
+    text-[15px] font-semibold py-3 px-8 rounded-full transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 ${marginTop}
   `;
 
   const variantStyle =
@@ -20,7 +21,9 @@ function Button({
       onClick={onClick}
       className={`${baseStyle} ${variantStyle} ${className}`}
     >
-      <a href={href}>{text}</a>
+      <a href={href} className="flex items-center gap-2">
+        {children ? children : text}
+      </a>
     </button>
   );
 }

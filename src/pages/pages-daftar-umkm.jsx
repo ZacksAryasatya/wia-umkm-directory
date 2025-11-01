@@ -21,21 +21,34 @@ function DaftarUmkm() {
     <Layout>
       <section
         className="
-          lg:mt-[20vh] mt-[15vh] px-6 py-10 lg:px-[100px] 
-          flex flex-col items-center 
+          mt-[15vh] sm:mt-[12vh] lg:mt-[15vh]
+          px-4 sm:px-8 lg:px-[100px]
+          py-8 sm:py-10
+          flex flex-col items-center
           w-full overflow-x-visible
         "
       >
-        <div className="flex items-center w-full max-w-[850px] bg-[#F5F7FA] border border-[#E2E8F0] rounded-full px-5 py-3 shadow-sm mb-6">
-          <FiSearch className="text-gray-400 text-lg" />
+        <div
+          className="
+            flex items-center w-full
+            max-w-[600px] sm:max-w-[750px] lg:max-w-[950px]
+            bg-[#F5F7FA] border border-[#E2E8F0]
+            rounded-full px-4 sm:px-6 py-2.5 sm:py-3
+            shadow-sm mb-6
+          "
+        >
+          <FiSearch className="text-gray-400 text-lg sm:text-xl" />
           <input
             type="text"
             placeholder="Cari UMKM..."
-            className="flex-1 bg-transparent outline-none px-3 text-gray-700 placeholder-gray-400"
+            className="
+              flex-1 bg-transparent outline-none
+              px-2 sm:px-3
+              text-gray-700 placeholder-gray-400 text-sm sm:text-base
+            "
           />
         </div>
-
-        <div className="w-full">
+        <div className="w-full max-w-[950px]">
           <CategoryBar
             active={active}
             onChange={(item) => setActive(item)}
@@ -43,9 +56,20 @@ function DaftarUmkm() {
           />
         </div>
       </section>
-
-      <section className="px-6 lg:px-[100px] py-10 mt-[-20px] mb-[20px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+      <section
+        className="
+          px-4 sm:px-8 lg:px-[100px]
+          py-10 mt-[-40px] sm:mt-[-20px] mb-10
+        "
+      >
+        <div
+          className="
+            grid
+            grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+            gap-6 sm:gap-8 lg:gap-10
+            justify-items-center
+          "
+        >
           {[...Array(6)].map((_, index) => (
             <UmkmCard key={index} />
           ))}
