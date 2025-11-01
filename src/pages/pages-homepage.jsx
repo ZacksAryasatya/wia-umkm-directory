@@ -44,11 +44,10 @@ function HomePage() {
             className="w-[100%] lg:w-[480px] h-auto"
           />
         </div>
-      </section>
-
+      </section >
       <section
-        id="umkmSection"
-        className="bg-white shadow-inner rounded-t-[35px] mt-10 px-6 lg:px-[100px] py-14"
+      id="umkmSection"
+        className="bg-white shadow-[inset_0_1px_3px_#C1D0E1] rounded-t-[50px] mt-10 px-6 lg:px-[100px] py-25"
       >
         <CategoryBar
           active={active}
@@ -56,9 +55,9 @@ function HomePage() {
             setActive(item);
           }}
           categories={kategori}
-        />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center mt-10">
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6.5 justify-items-center mt-10">
           {[...Array(6)].map((_, index) => (
             <UmkmCard key={index} />
           ))}
@@ -73,7 +72,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="flex flex-col lg:flex-row items-center justify-between px-6 lg:px-[100px] py-10 lg:py-10 bg-[#F8FAFC] rounded-b-[20px] mt-10">
+      <section className="flex flex-col lg:flex-row items-center justify-between px-6 lg:px-[100px] py-10 lg:py-10 bg-[#ffffff] rounded-b-[20px] ">
         <div className="w-full lg:w-1/2 lg:text-left mb-10 lg:mb-0">
           <h1 className="font-display text-black text-3xl lg:text-[42px] font-bold leading-tight">
             Tingkatkan Jangkauan <br className="hidden lg:block" />
@@ -83,7 +82,7 @@ function HomePage() {
             Gabung bersama ratusan UMKM lainnya dan jadikan bisnismu lebih mudah
             ditemukan oleh pelanggan di sekitarmu.
           </p>
-          <Button text={"Daftarkan Usaha Anda"} marginTop={"mt-6"} />
+          <Button text={"Daftarkan Usaha Anda"} marginTop={"mt-6"} href={"/profile-umkm"} />
         </div>
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <img
