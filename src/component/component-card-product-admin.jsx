@@ -1,6 +1,6 @@
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 
-function CardProductAdmin({ foto, nama, harga, deskripsi }) {
+function CardProductAdmin({ foto, nama, harga, deskripsi, onEdit, onDelete }) {
   return (
     <div className="flex items-start justify-between bg-white border border-gray-200 rounded-[15px] p-4 shadow-sm hover:shadow transition duration-200">
       <div className="flex items-start gap-4 w-full">
@@ -26,10 +26,10 @@ function CardProductAdmin({ foto, nama, harga, deskripsi }) {
         </div>
       </div>
       <div className="flex flex-col gap-2 ml-4 shrink-0">
-        <button className="border border-[#2563EB] text-[#2563EB] p-2 rounded-lg hover:bg-[#2563EB] hover:text-white transition">
+        <button onClick={onEdit} className="border border-[#2563EB] text-[#2563EB] p-2 rounded-lg hover:bg-[#2563EB] hover:text-white transition">
           <FiEdit2 size={14} />
         </button>
-        <button className="border border-red-500 text-red-500 p-2 rounded-lg hover:bg-red-500 hover:text-white transition">
+        <button onClick={onDelete} className="border border-red-500 text-red-500 p-2 rounded-lg hover:bg-red-500 hover:text-white transition">
           <FiTrash2 size={14} />
         </button>
       </div>
