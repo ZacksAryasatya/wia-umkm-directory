@@ -1,6 +1,4 @@
-import { FaShop } from "react-icons/fa6";
 import Button from "./component-button";
-import { FaStore } from "react-icons/fa";
 import { IoStorefrontOutline } from "react-icons/io5";
 import { FiMail, FiMap, FiMapPin, FiPhone } from "react-icons/fi";
 
@@ -26,7 +24,7 @@ function CardInfoUmkm({
       />
       <div className="px-5 py-4 space-y-2">
         <button className="border border-[#C1D0E1] rounded-full px-7 py-0.5 text-sm text-[13px] font-bold mb-4 hover:bg-gray-50 transition">
-          Kategori
+          {kategori || "Kategori UMKM"}
         </button>
         <h2 className="text-[16px] font-normal text-gray-800 leading-tight mt-[-9px]">
           {namaUmkm || "Nama UMKM"}

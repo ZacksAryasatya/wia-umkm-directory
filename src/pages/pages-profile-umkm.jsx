@@ -7,12 +7,34 @@ import Button from "../component/component-button.jsx";
 import CardProductAdmin from "../component/component-card-product-admin.jsx";
 import CardInfoUmkm from "../component/component-admin-card.jsx";
 import ComponentAnalisisUmkm from "../component/component-analisis-umkm.jsx";
+import ComponentPopupProduct from "../component/component-popup-card.jsx";
+
 import TabSelecting from "../component/component-tab-selecting.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PageProfileUmkm() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeTab, setActiveTab] = useState("produk");
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupMode, setPopupMode] = useState("add");
+
+  const HandleEditUmkm = () => {
+  setPopupMode("umkm"); // pakai mode 'umkm' biar isi popup-nya form usaha
+  setIsPopupOpen(true);
+};
+
+
+  const HandleAddProduct = () => {
+    setPopupMode("add");
+    setIsPopupOpen(true);
+  };
+
+  const HandleEditProduct = (product) => {
+    setPopupMode("edit");
+    setIsPopupOpen(true);
+    console.log("edit product:", product);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -46,6 +68,7 @@ export default function PageProfileUmkm() {
             <Button
               variant="outline"
               className="!py-1 !px-3 text-sm flex items-center gap-2 shrink-0"
+              onClick={HandleAddProduct}
             >
               <FaPlus />
               Tambah Produk
@@ -63,6 +86,14 @@ export default function PageProfileUmkm() {
                 nama="Kopi Susu Matcha"
                 harga="Rp 20.000"
                 deskripsi="Minuman campuran yang menggabungkan kopi, susu, dan bubuk teh hijau matcha."
+                onEdit={() =>
+                  HandleEditProduct({
+                    nama: "Kopi Susu Matcha",
+                    harga: "Rp 20.000",
+                    deskripsi:
+                      "Minuman campuran yang menggabungkan kopi, susu, dan bubuk teh hijau matcha.",
+                  })
+                }
               />
             </motion.div>
           ))}
@@ -165,6 +196,7 @@ export default function PageProfileUmkm() {
                   lokasi="Rembang, Jawa Tengah"
                   phone="+62 812-3456-7890"
                   email="bahlil@gmail.com"
+                  onEdit={HandleEditUmkm}
                 />
               </div>
               <div className="lg:col-span-2 order-2 flex flex-col mt-4 lg:mt-0">
@@ -182,6 +214,12 @@ export default function PageProfileUmkm() {
           </motion.div>
         )}
       </AnimatePresence>
+      <ComponentPopupProduct
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        mode={popupMode}
+      />
+      
     </Layout>
   );
 }
