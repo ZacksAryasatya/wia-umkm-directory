@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/daftar-umkm" element={<DaftarUmkm />} />
-        <Route path="/detail-umkm" element={<DetailUmkm />} />
+        <Route path="/umkm/:id" element={<DetailUmkm />} />
         <Route path="/profile-umkm" element={<AdminUmkm />} /> 
         <Route path="/register-page" element={<RegisterPage />} /> 
         {/* <Route path="/login-page" element={<LoginPage />} />  */}

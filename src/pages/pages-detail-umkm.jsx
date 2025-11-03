@@ -3,8 +3,21 @@ import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import Layout from "../layout/layout-main";
 import ProductCard from "../component/component-product-card";
 import Button from "../component/component-button";
+import { useParams } from "react-router-dom";
+import dataUmkm from "../data/data-umkm";
 
 function DetailUmkm() {
+  const { id } = useParams();
+  const umkm = dataUmkm.filter((umkm) => umkm.id === parseInt(id))[0];
+
+  if (!umkm) {
+    return (
+      <Layout>
+        <div className="p-10 text-center text-gray-500">UMKM Tidak Ditemukan</div>
+      </Layout>
+    )
+  };
+
   return (
     <Layout>
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 mt-[10vh]">
@@ -12,17 +25,17 @@ function DetailUmkm() {
           <div className="lg:col-span-2 space-y-10">
             <div className="bg-white shadow-md rounded-[30px] overflow-hidden">
               <img
-                src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
+                src={umkm.gambar}
                 alt="Foto UMKM"
                 className="w-full h-52 sm:h-72 md:h-80 lg:h-96 object-cover"
               />
               <div className="p-6 sm:p-8">
                 <button className="border border-[#C1D0E1] rounded-full px-4 py-1 text-sm font-medium mb-4 hover:bg-gray-50 transition">
-                  Kategori
+                  {umkm.kategori}
                 </button>
 
                 <h1 className="text-2xl font-semibold text-gray-800 mb-2">
-                  Nama UMKM
+                  {umkm.nama}
                 </h1>
 
                 <hr className="border-gray-200 my-4" />
@@ -31,10 +44,7 @@ function DetailUmkm() {
                   Tentang Bisnis Ini
                 </h2>
                 <p className="text-gray-600 leading-relaxed text-justify text-sm sm:text-base">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Similique doloremque totam dolore error quis. Eum repellat
-                  eveniet id sit? Iusto earum error aut illo omnis est quisquam
-                  dolor laudantium id!
+                  {umkm.deskripsi}
                 </p>
               </div>
             </div>
@@ -43,9 +53,16 @@ function DetailUmkm() {
                 Produk dan Layanan
               </h1>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-                {[...Array(6)].map((_, i) => (
-                  <ProductCard key={i} />
-                ))}
+                {
+                  umkm.product && umkm.product.length !== 0 ? (
+                    // <ProductCard fotoProduct={umkm.product[0].gambar} namaProduct={umkm.product[0].namaProduct} deskripsiProduct={umkm.product[0].deskripsi} hargaProduct={umkm.product[0].harga} />
+                    umkm.product.map((umkm) => (
+                      <ProductCard fotoProduct={umkm.gambar} namaProduct={umkm.namaProduct} deskripsiProduct={umkm.deskripsi} hargaProduct={umkm.harga}/>
+                    ))
+                  ) : (
+                    [...Array(6)].map((_, i) => <ProductCard key={i} />)
+                  )
+                }
               </div>
             </div>
           </div>
@@ -63,7 +80,7 @@ function DetailUmkm() {
                     />
                     <div>
                       <p className="font-medium text-gray-700">Location</p>
-                      <p className="text-gray-500">Rembang, Kudus</p>
+                      <p className="text-gray-500">{umkm.alamat}</p>
                     </div>
                   </div>
                   <hr className="border-t border-[#C1D0E1] my-3" />
@@ -76,7 +93,7 @@ function DetailUmkm() {
                     />
                     <div>
                       <p className="font-medium text-gray-700">Phone</p>
-                      <p className="text-gray-500">+62 XXX-XXX-XX</p>
+                      <p className="text-gray-500">{umkm.phone}</p>
                     </div>
                   </div>
                   <hr className="border-t border-[#C1D0E1] my-3" />
@@ -86,7 +103,7 @@ function DetailUmkm() {
                     <FiMail className="text-blue-600 mt-1 shrink-0" size={16} />
                     <div>
                       <p className="font-medium text-gray-700">Email</p>
-                      <p className="text-gray-500">budi@gmail.com</p>
+                      <p className="text-gray-500">{umkm.email}</p>
                     </div>
                   </div>
                 </div>
@@ -97,6 +114,7 @@ function DetailUmkm() {
                 variant="filled"
                 marginTop="mt-6"
                 className="w-full sm:w-auto"
+                href={umkm.redirectPhone}
               />
             </div>
             <div className="bg-white shadow-md rounded-[30px] p-6 sm:p-8">
@@ -104,7 +122,7 @@ function DetailUmkm() {
                 Map Location
               </h1>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d355.3279775420126!2d110.8418523!3d-6.7536724!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70db0ae9cff9db%3A0x60b915d5b6ca6a94!2sRumah%20Makan%20Masakan%20Padang%20%22Putri%20Minang%22!5e1!3m2!1sid!2sid!4v1761359935243!5m2!1sid!2sid"
+                src={umkm.embed}
                 width="100%"
                 height="250"
                 style={{ border: 0 }}

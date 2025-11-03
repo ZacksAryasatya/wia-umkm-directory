@@ -1,12 +1,14 @@
 import { FiSearch } from "react-icons/fi";
 import Layout from "../layout/layout-main.jsx";
 import CategoryBar from "../component/component-category-bar.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UmkmCard from "../component/component-umkm-card.jsx";
-import { Link } from "react-router-dom";
+import dataUmkm from "../data/data-umkm.js";
 
 function DaftarUmkm() {
   const [active, setActive] = useState("Semua");
+  const [query, setQuery] = useState("");
+  const [displayedData, setDisplayed] = useState(dataUmkm);
 
   const kategori = [
     "Semua",
@@ -16,6 +18,32 @@ function DaftarUmkm() {
     "Kreatif & Digital",
     "Retail",
   ];
+
+  const filterDataUmkm = (category, searchQuery) => {
+    const lowerQuery = searchQuery.toLowerCase().trim();
+
+    const filtered = dataUmkm.filter((item) => {
+      const matchCategory =
+        category === "Semua" || item.kategori === category;
+      const matchName =
+        lowerQuery === "" || item.nama.toLowerCase().includes(lowerQuery);
+      return matchCategory && matchName;
+    });
+
+    setDisplayed(filtered);
+  };
+
+  const handleCategoryChange = (categoryName) => {
+    setActive(categoryName);
+  };
+
+  const handleSearchChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  useEffect(() => {
+    filterDataUmkm(active, query);
+  }, [active, query]);
 
   return (
     <Layout>
@@ -41,6 +69,8 @@ function DaftarUmkm() {
           <input
             type="text"
             placeholder="Cari UMKM..."
+            value={query}
+            onChange={handleSearchChange}
             className="
               flex-1 bg-transparent outline-none
               px-2 sm:px-3
@@ -48,14 +78,16 @@ function DaftarUmkm() {
             "
           />
         </div>
+
         <div className="w-full max-w-[950px]">
           <CategoryBar
             active={active}
-            onChange={(item) => setActive(item)}
+            onChange={handleCategoryChange}
             categories={kategori}
           />
         </div>
       </section>
+
       <section
         className="
           px-4 sm:px-8 lg:px-[100px]
@@ -70,9 +102,24 @@ function DaftarUmkm() {
             justify-items-center
           "
         >
-          {[...Array(6)].map((_, index) => (
-            <UmkmCard key={index} />
-          ))}
+          {displayedData.length > 0 ? (
+            displayedData.map((umkm) => (
+              <UmkmCard
+                key={umkm.id}
+                id={umkm.id}
+                fotoUmkm={umkm.gambar[0]}
+                namaUmkm={umkm.nama}
+                kategori={umkm.kategori}
+                deskripsi={umkm.deskripsi}
+                location={umkm.alamat}
+                noHp={umkm.phone}
+              />
+            ))
+          ) : (
+            <p className="col-span-full text-gray-500">
+              UMKM Tidak Ditemukan
+            </p>
+          )}
         </div>
       </section>
     </Layout>

@@ -1,10 +1,10 @@
 import { FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-function UmkmCard({ fotoUmkm, namaUmkm, deskripsi, location, noHp}) {
+function UmkmCard({ id, fotoUmkm, namaUmkm, deskripsi, location, noHp, kategori}) {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/detail-umkm');
+    navigate(`/umkm/${id}`);
   }
   return (
     <div
@@ -24,7 +24,7 @@ function UmkmCard({ fotoUmkm, namaUmkm, deskripsi, location, noHp}) {
         <h2 className="text-xl font-bold mb-2">{namaUmkm || "Nama UMKM"}</h2>
 
         <button className="border border-[#C1D0E1] rounded-full px-4 py-1 text-sm font-semibold mb-3 hover:bg-gray-50 transition">
-          Kategori
+          {kategori || "kategori"}
         </button>
 
         <p className="text-gray-500 text-sm mb-5 leading-relaxed">

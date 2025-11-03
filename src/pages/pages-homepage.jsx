@@ -1,10 +1,11 @@
 import Layout from "../layout/layout-main.jsx";
 import heroImage from "../assets/hero-image.svg";
 import heroImage2 from "../assets/hero-image-2.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UmkmCard from "../component/component-umkm-card.jsx";
 import Button from "../component/component-button.jsx";
 import CategoryBar from "../component/component-category-bar.jsx";
+import dataUmkm from "../data/data-umkm.js";
 
 function HomePage() {
   const kategori = [
@@ -16,6 +17,29 @@ function HomePage() {
     "Retail",
   ];
   const [active, setActive] = useState("Semua");
+  const [displayedData, setDisplayed] = useState(dataUmkm.slice(0, 6));
+
+  const filterDataUmkm = (active) => {
+    let filteredData;
+
+    if (active === "Semua") {
+      filteredData = dataUmkm.slice(0, 6);
+    } else {
+      filteredData = dataUmkm.filter((data) => data.kategori === active);
+
+      filteredData = filteredData.slice(0, 6);
+    }
+
+    setDisplayed(filteredData);
+  };
+
+  useEffect(() => {
+    filterDataUmkm(active);
+  },[active]);
+
+  const handleCategoryChange = (categoryName) => {
+    setActive(categoryName);
+  };
 
   return (
     <Layout>
@@ -44,23 +68,35 @@ function HomePage() {
             className="w-[100%] lg:w-[480px] h-auto"
           />
         </div>
-      </section >
+      </section>
       <section
-      id="umkmSection"
+        id="umkmSection"
         className="bg-white shadow-[inset_0_1px_3px_#C1D0E1] rounded-t-[50px] mt-10 px-6 lg:px-[100px] py-25"
       >
         <CategoryBar
           active={active}
-          onChange={(item) => {
-            setActive(item);
-          }}
+          onChange={handleCategoryChange}
           categories={kategori}
-
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6.5 justify-items-center mt-10">
-          {[...Array(6)].map((_, index) => (
-            <UmkmCard key={index} />
+          {displayedData.map((umkm) => (
+            <UmkmCard
+              key={umkm.id}
+              id={umkm.id}
+              namaUmkm={umkm.nama}
+              deskripsi={umkm.deskripsi}
+              fotoUmkm={umkm.gambar[0]}
+              location={umkm.alamat}
+              noHp={umkm.phone}
+              kategori={umkm.kategori}
+            />
           ))}
+
+          {displayedData.length === 0 && (
+            <p className="cols-span-full text-gray-500">
+              Tidak UMKM yang ditemukan di dalam kategori {active}
+            </p>
+          )}
         </div>
         <div className="flex justify-center mt-10">
           <Button
@@ -82,7 +118,11 @@ function HomePage() {
             Gabung bersama ratusan UMKM lainnya dan jadikan bisnismu lebih mudah
             ditemukan oleh pelanggan di sekitarmu.
           </p>
-          <Button text={"Daftarkan Usaha Anda"} marginTop={"mt-6"} href={"/profile-umkm"} />
+          <Button
+            text={"Daftarkan Usaha Anda"}
+            marginTop={"mt-6"}
+            href={"/profile-umkm"}
+          />
         </div>
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <img
