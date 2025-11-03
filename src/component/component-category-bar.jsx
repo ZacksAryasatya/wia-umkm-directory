@@ -18,7 +18,7 @@ function CategoryBar({ categories = [], active, onChange }) {
               key={item}
               name={item}
               className={buttonStyle}
-              onClick={() => onChange(item)}
+              onClick={() => {onChange(item)}}
             >
               {item}
             </button>
