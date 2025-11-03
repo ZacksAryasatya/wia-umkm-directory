@@ -113,7 +113,7 @@ function DetailUmkm() {
                 text="Contact Business"
                 variant="filled"
                 marginTop="mt-6"
-                className="w-full sm:w-auto"
+                className="w-[100%] sm:w-[100%] !py-3 !text-base"
                 href={umkm.redirectPhone}
               />
             </div>
