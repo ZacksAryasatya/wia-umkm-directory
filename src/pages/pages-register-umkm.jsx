@@ -173,6 +173,7 @@ export default function PageRegisterUmkm() {
                 className="w-full sm:w-1/2 !rounded-full sm:!rounded-l-full sm:!rounded-r-none !py-3 !text-base"
               />
               <Button
+                href={"/"}
                 text="Cancel"
                 variant="outline"
                 className="w-full sm:w-1/2 !rounded-full sm:!rounded-r-full sm:!rounded-l-none !py-3 !text-base"
