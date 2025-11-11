@@ -59,6 +59,7 @@ function HomePage() {
             text={"Lihat UMKM Sekitar"}
             variant="filled"
             href={"#umkmSection"}
+            className="w-[250px] !py-3 !text-base !rounded-full"
           />
         </div>
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
@@ -122,6 +123,7 @@ function HomePage() {
             text={"Daftarkan Usaha Anda"}
             marginTop={"mt-6"}
             href={"/profile-umkm"}
+            className="w-[250px] !py-3 !text-base !rounded-full"
           />
         </div>
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
