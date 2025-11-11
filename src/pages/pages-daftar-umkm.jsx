@@ -23,8 +23,7 @@ function DaftarUmkm() {
     const lowerQuery = searchQuery.toLowerCase().trim();
 
     const filtered = dataUmkm.filter((item) => {
-      const matchCategory =
-        category === "Semua" || item.kategori === category;
+      const matchCategory = category === "Semua" || item.kategori === category;
       const matchName =
         lowerQuery === "" || item.nama.toLowerCase().includes(lowerQuery);
       return matchCategory && matchName;
@@ -49,7 +48,7 @@ function DaftarUmkm() {
     <Layout>
       <section
         className="
-          mt-[15vh] sm:mt-[12vh] lg:mt-[15vh]
+          pt-[90px] sm:pt-[80px] lg:pt-[100px]
           px-4 sm:px-8 lg:px-[100px]
           py-8 sm:py-10
           flex flex-col items-center
@@ -59,10 +58,9 @@ function DaftarUmkm() {
         <div
           className="
             flex items-center w-full
-            max-w-[600px] sm:max-w-[750px] lg:max-w-[950px]
-            bg-[#F5F7FA] border border-[#E2E8F0]
-            rounded-full px-4 sm:px-6 py-2.5 sm:py-3
-            shadow-sm mb-6
+    bg-[#F5F7FA] border border-[#E2E8F0]
+    rounded-full px-4 sm:px-6 py-2.5 sm:py-3
+    shadow-sm mb-6
           "
         >
           <FiSearch className="text-gray-400 text-lg sm:text-xl" />
@@ -79,7 +77,7 @@ function DaftarUmkm() {
           />
         </div>
 
-        <div className="w-full max-w-[950px]">
+        <div className="w-full max-w-[1300px]">
           <CategoryBar
             active={active}
             onChange={handleCategoryChange}
@@ -116,9 +114,7 @@ function DaftarUmkm() {
               />
             ))
           ) : (
-            <p className="col-span-full text-gray-500">
-              UMKM Tidak Ditemukan
-            </p>
+            <p className="col-span-full text-gray-500">UMKM Tidak Ditemukan</p>
           )}
         </div>
       </section>
