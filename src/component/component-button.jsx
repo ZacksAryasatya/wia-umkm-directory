@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function Button({
   text,
   variant = "filled",
@@ -16,6 +17,16 @@ function Button({
       ? "bg-[#2563EB] hover:bg-[#1E4FC3] text-white"
       : "border-2 border-[#2563EB] text-[#2563EB] hover:bg-[#2563EB] hover:text-white";
 
+      if (href) {
+    return (
+      <Link
+        to={href}
+        className={`${baseStyle} ${variantStyle} ${className}`}
+      >
+        {children || text}
+      </Link>
+    );
+  }
   return (
     <button
       onClick={onClick}

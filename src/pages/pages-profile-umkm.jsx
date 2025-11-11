@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowLeft, FaPlus } from "react-icons/fa";
-import Layout from "../layout/layout-main.jsx";
+import { FaPlus } from "react-icons/fa";
 import TextField from "../component/component-textfield.jsx";
 import Button from "../component/component-button.jsx";
 import CardProductAdmin from "../component/component-card-product-admin.jsx";
 import CardInfoUmkm from "../component/component-admin-card.jsx";
 import ComponentAnalisisUmkm from "../component/component-analisis-umkm.jsx";
 import ComponentPopupProduct from "../component/component-popup-card.jsx";
-
 import TabSelecting from "../component/component-tab-selecting.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,10 +18,9 @@ export default function PageProfileUmkm() {
   const [popupMode, setPopupMode] = useState("add");
 
   const HandleEditUmkm = () => {
-  setPopupMode("umkm"); // pakai mode 'umkm' biar isi popup-nya form usaha
-  setIsPopupOpen(true);
-};
-
+    setPopupMode("umkm");
+    setIsPopupOpen(true);
+  };
 
   const HandleAddProduct = () => {
     setPopupMode("add");
@@ -41,24 +38,19 @@ export default function PageProfileUmkm() {
     setIsLoggedIn(true);
   };
 
-  const BackLink = () => (
-    <div className="flex items-center gap-2 text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
-      <FaArrowLeft size={16} />
-      <Link to="/" className="font-medium hover:text-gray-800 transition">
-        Kembali Ke Beranda
-      </Link>
-    </div>
-  );
+  const pageTransition = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -30 },
+    transition: { duration: 0.5, ease: "easeOut" },
+  };
 
   const renderTabContent = () => (
     <AnimatePresence mode="wait">
       {activeTab === "produk" ? (
         <motion.div
           key="produk"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.4 }}
+          {...pageTransition}
           className="space-y-4 max-h-[70vh] overflow-y-auto pr-2 custom-scroll"
         >
           <div className="flex justify-between items-center mb-4 flex-wrap gap-3">
@@ -79,8 +71,7 @@ export default function PageProfileUmkm() {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.3, delay: i * 0.05 }}
             >
               <CardProductAdmin
                 nama="Kopi Susu Matcha"
@@ -99,13 +90,7 @@ export default function PageProfileUmkm() {
           ))}
         </motion.div>
       ) : (
-        <motion.div
-          key="analisis"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.4 }}
-        >
+        <motion.div key="analisis" {...pageTransition}>
           <ComponentAnalisisUmkm />
         </motion.div>
       )}
@@ -113,28 +98,24 @@ export default function PageProfileUmkm() {
   );
 
   return (
-    <Layout>
-      <AnimatePresence exitBeforeEnter>
+    <div className="m-[5px] mt-[20px] mb-[20px]">
+      <AnimatePresence mode="wait">
         {!isLoggedIn ? (
           <motion.div
             key="login"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.4 }}
-            className="max-w-md sm:max-w-3xl mx-auto mt-8 sm:mt-[8vh] px-4 sm:px-6 lg:px-8 py-8 sm:py-10"
+            {...pageTransition}
+            className="max-w-md sm:max-w-3xl mx-auto mt-8 px-4 py-8"
           >
-            <BackLink />
-            <section className="bg-white rounded-[40px] border border-gray-200 shadow-sm p-5 sm:p-8">
+            <section className="bg-white rounded-[40px] border border-gray-200 shadow-sm p-6">
               <form
                 onSubmit={handleLogin}
-                className="flex flex-col gap-6 sm:gap-8 w-full"
+                className="flex flex-col gap-6 w-full"
               >
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-[-16px] sm:mb-[-20px]">
+                <h2 className="text-lg font-semibold text-gray-800">
                   Masuk ke Akun Anda
                 </h2>
                 <hr className="border-t border-[#C1D0E1]" />
-                <div className="border border-gray-200 rounded-[30px] p-4 sm:p-6 flex flex-col gap-4 transition-all duration-300 hover:shadow-md hover:border-[#2563EB]">
+                <div className="border border-gray-200 rounded-[30px] p-5 flex flex-col gap-4 hover:shadow-md transition-all duration-300 hover:border-[#2563EB]">
                   <TextField
                     label="Username"
                     placeholder="Masukkan Username Anda"
@@ -146,20 +127,15 @@ export default function PageProfileUmkm() {
                     placeholder="Masukkan Password Anda"
                     name="password"
                   />
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm text-gray-600 gap-2 sm:gap-0 mt-1">
-                    <label className="flex items-center gap-2 cursor-pointer group">
+                  <div className="flex justify-between text-sm text-gray-600 mt-1">
+                    <label className="flex items-center gap-2 cursor-pointer">
                       <input
                         type="checkbox"
-                        className="rounded border-gray-300 transition-all duration-200"
+                        className="rounded border-gray-300"
                       />
-                      <span className="group-hover:text-[#2563EB] transition-colors duration-200">
-                        Remember me
-                      </span>
+                      Remember me
                     </label>
-                    <Link
-                      to="#"
-                      className="relative text-[#2563EB] font-medium before:absolute before:w-0 before:h-[1.5px] before:bottom-0 before:left-0 before:bg-[#2563EB] before:transition-all before:duration-300 hover:before:w-full"
-                    >
+                    <Link className="text-[#2563EB] font-medium hover:underline">
                       Lupa Password?
                     </Link>
                   </div>
@@ -168,7 +144,7 @@ export default function PageProfileUmkm() {
                     Belum Punya Akun?{" "}
                     <Link
                       to="/register-page"
-                      className="text-[#2563EB] font-medium relative before:absolute before:w-0 before:h-[1.5px] before:bottom-0 before:left-0 before:bg-[#2563EB] before:transition-all before:duration-300 hover:before:w-full"
+                      className="text-[#2563EB] font-medium hover:underline"
                     >
                       Daftar Sekarang!
                     </Link>
@@ -180,15 +156,21 @@ export default function PageProfileUmkm() {
         ) : (
           <motion.div
             key="dashboard"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="flex-grow w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 mt-[6vh] sm:mt-[9vh]"
+            {...pageTransition}
+            className="flex-grow w-full max-w-[1200px] mx-auto p-[10px]"
           >
-            <BackLink />
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-              <div className="lg:col-span-1 order-1">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="grid grid-cols-1 lg:grid-cols-3 gap-4"
+            >
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="lg:col-span-1 order-1"
+              >
                 <CardInfoUmkm
                   kategori="Makanan"
                   namaUmkm="Nama UMKM"
@@ -198,9 +180,15 @@ export default function PageProfileUmkm() {
                   email="bahlil@gmail.com"
                   onEdit={HandleEditUmkm}
                 />
-              </div>
-              <div className="lg:col-span-2 order-2 flex flex-col mt-4 lg:mt-0">
-                <div className="bg-white border border-gray-200 rounded-[20px] shadow-sm p-4 sm:p-6 min-h-[70vh] flex flex-col">
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="lg:col-span-2 order-2 flex flex-col"
+              >
+                <div className="bg-white border border-gray-200 rounded-[20px] shadow-sm p-5 min-h-[70vh] flex flex-col">
                   <TabSelecting
                     activeTab={activeTab}
                     setActiveTab={setActiveTab}
@@ -209,17 +197,17 @@ export default function PageProfileUmkm() {
                     {renderTabContent()}
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
       <ComponentPopupProduct
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
         mode={popupMode}
       />
-      
-    </Layout>
+    </div>
   );
 }

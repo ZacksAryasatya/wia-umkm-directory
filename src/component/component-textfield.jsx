@@ -20,7 +20,10 @@ export default function TextField({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="w-full rounded-2xl border border-gray-300 px-4 py-2.5 text-gray-700 focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] placeholder-gray-400"
+        className="w-full border border-gray-300 rounded-[15px] p-3 
+  text-sm transition duration-200
+  focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10 outline-none"
+        rows="3"
       />
     </div>
   );

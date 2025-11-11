@@ -100,7 +100,7 @@ function HomePage() {
         </div>
         <div className="flex justify-center mt-10">
           <Button
-            marginTop={"mt-6"}
+            marginTop={"mt-15"}
             text={"Lihat Semua"}
             variant="rounded"
             href={"/daftar-umkm"}
@@ -108,7 +108,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="flex flex-col lg:flex-row items-center justify-between px-6 lg:px-[100px] py-10 lg:py-10 bg-[#ffffff] rounded-b-[20px] ">
+      <section className="flex flex-col mt-[-30px] lg:flex-row items-center justify-between px-6 lg:px-[100px] py-10 lg:py-10 bg-[#ffffff] rounded-b-[20px] ">
         <div className="w-full lg:w-1/2 lg:text-left mb-10 lg:mb-0">
           <h1 className="font-display text-black text-3xl lg:text-[42px] font-bold leading-tight">
             Tingkatkan Jangkauan <br className="hidden lg:block" />
@@ -128,7 +128,7 @@ function HomePage() {
           <img
             src={heroImage2}
             alt="Daftarkan UMKM"
-            className="w-[70%] lg:w-[420px] h-auto"
+            className="w-[70%] lg:w-[370px] h-auto"
           />
         </div>
       </section>
