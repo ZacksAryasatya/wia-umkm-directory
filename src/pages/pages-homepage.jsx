@@ -102,7 +102,7 @@ function HomePage() {
         className="bg-white shadow-[inset_0_1px_3px_#C1D0E1] rounded-t-[50px] mt-10 px-6 lg:px-[100px] py-25"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0 }}
         variants={fadeIn}
       >
         <CategoryBar
@@ -147,7 +147,7 @@ function HomePage() {
         className="flex flex-col mt-[-30px] lg:flex-row items-center justify-between px-6 lg:px-[100px] py-10 lg:py-10 bg-[#ffffff] rounded-b-[20px] "
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0 }}
         variants={fadeInUp}
       >
         <div className="w-full lg:w-1/2 lg:text-left mb-10 lg:mb-0">
