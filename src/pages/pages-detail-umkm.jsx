@@ -154,7 +154,7 @@ function DetailUmkm() {
             <iframe
               src={umkm.embed}
               width="100%"
-              height="300"
+              height="340"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
