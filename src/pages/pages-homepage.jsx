@@ -163,7 +163,7 @@ function HomePage() {
             <Button
               text={"Daftarkan Usaha Anda"}
               marginTop={"mt-6"}
-              href={"/profile-umkm"}
+              href={"/register-page"}
               className="w-[250px] !py-3 !text-base !rounded-full"
             />
           </motion.div>
