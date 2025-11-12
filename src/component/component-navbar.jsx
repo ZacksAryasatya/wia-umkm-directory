@@ -18,20 +18,15 @@ function Navbar() {
   return (
     <nav className="bg-white shadow-[inset_0_-0.5px_3px_#C1D0E1] fixed top-0 w-full z-50">
       <div className="flex justify-between items-center py-4 px-6 lg:px-[60px]">
-        {/* Logo */}
         <a
           href="/"
           className="text-2xl font-bold text-[#1B54D0] font-display cursor-pointer"
         >
           GrowUMKM
         </a>
-
-        {/* Hamburger Icon */}
         <div className="text-3xl lg:hidden cursor-pointer" onClick={toggleMenu}>
           {isMenuOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}
         </div>
-
-        {/* Desktop Menu */}
         <ul className="hidden lg:flex items-center gap-5">
           <li>
             <a
@@ -57,8 +52,6 @@ function Navbar() {
               Daftar UMKM
             </a>
           </li>
-
-          {/* Buttons Desktop */}
           <div className="flex gap-3">
             <Button
               variant="outlined"
@@ -77,8 +70,6 @@ function Navbar() {
           </div>
         </ul>
       </div>
-
-      {/* Mobile Menu */}
       <div
         className={`lg:hidden bg-white shadow-md transition-all duration-300 overflow-hidden ${
           isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
@@ -111,8 +102,6 @@ function Navbar() {
               Daftar UMKM
             </a>
           </li>
-
-          {/* Buttons Mobile */}
           <div className="flex flex-col w-full gap-3 mt-3">
             <Button
               variant="outlined"
