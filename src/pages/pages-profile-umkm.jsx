@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import TextField from "../component/component-textfield.jsx";
@@ -8,14 +8,21 @@ import CardInfoUmkm from "../component/component-admin-card.jsx";
 import ComponentAnalisisUmkm from "../component/component-analisis-umkm.jsx";
 import ComponentPopupProduct from "../component/component-popup-card.jsx";
 import TabSelecting from "../component/component-tab-selecting.jsx";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PageProfileUmkm() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeTab, setActiveTab] = useState("produk");
-
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupMode, setPopupMode] = useState("add");
+
+  useEffect(() => {
+    const loginStatus = sessionStorage.getItem("isLoggedIn");
+    if (loginStatus === "true") {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const HandleEditUmkm = () => {
     setPopupMode("umkm");
@@ -36,6 +43,7 @@ export default function PageProfileUmkm() {
   const handleLogin = (e) => {
     e.preventDefault();
     setIsLoggedIn(true);
+    sessionStorage.setItem("isLoggedIn", "true");
   };
 
   const pageTransition = {
