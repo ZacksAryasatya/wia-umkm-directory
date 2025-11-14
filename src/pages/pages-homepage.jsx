@@ -2,6 +2,7 @@ import Layout from "../layout/layout-main.jsx";
 import heroImage from "../assets/hero-image.svg";
 import heroImage2 from "../assets/hero-image-2.svg";
 import { useEffect, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import UmkmCard from "../component/component-umkm-card.jsx";
 import Button from "../component/component-button.jsx";

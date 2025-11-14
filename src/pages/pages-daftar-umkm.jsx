@@ -2,6 +2,7 @@ import { FiSearch } from "react-icons/fi";
 import Layout from "../layout/layout-main.jsx";
 import CategoryBar from "../component/component-category-bar.jsx";
 import { useEffect, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import UmkmCard from "../component/component-umkm-card.jsx";
 import dataUmkm from "../data/data-umkm.js";

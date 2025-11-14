@@ -4,6 +4,7 @@ import ProductCard from "../component/component-product-card";
 import Button from "../component/component-button";
 import { useParams } from "react-router-dom";
 import dataUmkm from "../data/data-umkm";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 function DetailUmkm() {
