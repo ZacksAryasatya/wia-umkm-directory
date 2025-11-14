@@ -156,8 +156,7 @@ function HomePage() {
             Bisnismu Sekarang
           </motion.h1>
           <motion.p className="font-display text-[#696969] text-[15px] lg:text-[16px] leading-relaxed mt-4 text-justify" variants={fadeInUp}>
-            Gabung bersama ratusan UMKM lainnya dan jadikan bisnismu lebih mudah
-            ditemukan oleh pelanggan di sekitarmu.
+            Gabung bersama ratusan UMKM lainnya dan jadikan bisnismu lebih mudah ditemukan oleh pelanggan di sekitarmu.
           </motion.p>
           <motion.div variants={fadeInUp}>
             <Button

@@ -27,7 +27,7 @@ function UmkmCard({ id, fotoUmkm, namaUmkm, deskripsi, location, noHp, kategori}
           {kategori || "kategori"}
         </button>
 
-        <p className="text-gray-500 text-sm mb-5 leading-relaxed">
+        <p className="text-gray-500 text-sm mb-5 leading-relaxed text-justify">
           {deskripsi ||
             `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.`}
