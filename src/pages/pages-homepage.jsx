@@ -69,7 +69,7 @@ function HomePage() {
             Bisnis Lokal Dengan Mudah
           </motion.h1>
           <motion.p
-            className="font-display text-[#696969] text-[15px] lg:text-[16px] leading-relaxed mt-4"
+            className="font-display text-[#696969] text-[15px] lg:text-[16px] leading-relaxed mt-4 text-justify"
             variants={fadeInUp}
           >
             Jelajahi berbagai UMKM di sekitarmu, temukan produk dan layanan
@@ -155,7 +155,7 @@ function HomePage() {
             Tingkatkan Jangkauan <br className="hidden lg:block" />
             Bisnismu Sekarang
           </motion.h1>
-          <motion.p className="font-display text-[#696969] text-[15px] lg:text-[16px] leading-relaxed mt-4" variants={fadeInUp}>
+          <motion.p className="font-display text-[#696969] text-[15px] lg:text-[16px] leading-relaxed mt-4 text-justify" variants={fadeInUp}>
             Gabung bersama ratusan UMKM lainnya dan jadikan bisnismu lebih mudah
             ditemukan oleh pelanggan di sekitarmu.
           </motion.p>
