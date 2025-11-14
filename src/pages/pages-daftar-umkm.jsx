@@ -45,29 +45,9 @@ function DaftarUmkm() {
     filterDataUmkm(active, query);
   }, [active, query]);
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  const containerStagger = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const cardItem = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-  };
-
   return (
     <Layout>
-      <motion.section
+      <section
         className="
           pt-[90px] sm:pt-[80px] lg:pt-[100px]
           px-4 sm:px-8 lg:px-[100px]
@@ -75,18 +55,17 @@ function DaftarUmkm() {
           flex flex-col items-center
           w-full overflow-x-visible
         "
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
       >
         <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
           className="
             flex items-center w-full
             bg-[#F5F7FA] border border-[#E2E8F0]
             rounded-full px-4 sm:px-6 py-2.5 sm:py-3
             shadow-sm mb-6 mt-8
           "
-          variants={fadeInUp}
         >
           <FiSearch className="text-gray-400 text-lg sm:text-xl" />
           <input
@@ -101,10 +80,11 @@ function DaftarUmkm() {
             "
           />
         </motion.div>
-
         <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="w-full max-w-[1300px]"
-          variants={fadeInUp}
         >
           <CategoryBar
             active={active}
@@ -112,29 +92,32 @@ function DaftarUmkm() {
             categories={kategori}
           />
         </motion.div>
-      </motion.section>
-      <motion.section
+      </section>
+      <section
         className="
           px-4 sm:px-8 lg:px-[100px]
           py-10 mt-[-40px] sm:mt-[-20px] mb-10
         "
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerStagger}
       >
-        <motion.div
+        <div
           className="
             grid
             grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
             gap-6 sm:gap-8 lg:gap-10
             justify-items-center
           "
-          variants={containerStagger}
         >
           {displayedData.length > 0 ? (
-            displayedData.map((umkm) => (
-              <motion.div key={umkm.id} variants={cardItem}>
+            displayedData.map((umkm, index) => (
+              <motion.div
+                key={umkm.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.05,
+                }}
+              >
                 <UmkmCard
                   id={umkm.id}
                   fotoUmkm={umkm.gambar[0]}
@@ -148,14 +131,16 @@ function DaftarUmkm() {
             ))
           ) : (
             <motion.p
-              className="col-span-full text-gray-500"
-              variants={fadeInUp}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
+              className="col-span-full text-gray-500 text-center mt-10"
             >
               UMKM Tidak Ditemukan
             </motion.p>
           )}
-        </motion.div>
-      </motion.section>
+        </div>
+      </section>
     </Layout>
   );
 }
