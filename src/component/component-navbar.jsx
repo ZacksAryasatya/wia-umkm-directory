@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-import { useLocation } from "react-router-dom";
+import { FaRegUserCircle } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 import Button from "./component-button";
 
 function Navbar() {
@@ -16,7 +17,7 @@ function Navbar() {
     } else {
       setIsLoggedIn(false);
     }
-  }, [location]); // update saat berpindah halaman
+  }, [location]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -24,7 +25,7 @@ function Navbar() {
 
   return (
     <nav className="bg-white shadow-[inset_0_-0.5px_3px_#C1D0E1] fixed top-0 w-full z-50">
-      <div className="flex justify-between items-center py-4 px-6 lg:px-[60px]">
+      <div className="flex justify-between items-center py-4 px-6 lg:px-[100px]">
         <a
           href="/"
           className="text-2xl font-bold text-[#1B54D0] font-display cursor-pointer"
@@ -62,12 +63,9 @@ function Navbar() {
 
           <div className="flex gap-3">
             {isLoggedIn ? (
-              <a
-                href="/profile-umkm"
-                className="text-[#1B54D0] font-medium text-[15px] hover:underline"
-              >
-                Account
-              </a>
+              <Link to={"/profile-umkm"}>
+                <FaRegUserCircle className="text-[#1B54D0]" size={30} />
+              </Link>
             ) : (
               <>
                 <Button
@@ -124,7 +122,7 @@ function Navbar() {
             </a>
           </li>
 
-          <div className="flex flex-col w-full gap-3 mt-3">
+          <div className="flex flex-col w-full gap-3 lg:mt-3">
             {isLoggedIn ? (
               <a
                 href="/profile-umkm"
