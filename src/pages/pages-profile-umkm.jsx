@@ -10,6 +10,7 @@ import ComponentPopupProduct from "../component/component-popup-card.jsx";
 import TabSelecting from "../component/component-tab-selecting.jsx";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
+import dataUmkm from "../data/data-umkm.js";
 
 export default function PageProfileUmkm() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -74,17 +75,15 @@ export default function PageProfileUmkm() {
               Tambah Produk
             </Button>
           </div>
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
-            >
+          {exampleUmkm[0].product.map((product, i) => (
+            <motion.div>
+              {" "}
               <CardProductAdmin
-                nama="Kopi Susu Matcha"
-                harga="Rp 20.000"
-                deskripsi="Minuman campuran yang menggabungkan kopi, susu, dan bubuk teh hijau matcha."
+                key={i}
+                nama={product.namaProduct}
+                harga={product.harga}
+                deskripsi={product.deskripsi}
+                foto={product.gambar}
                 onEdit={() =>
                   HandleEditProduct({
                     nama: "Kopi Susu Matcha",
@@ -93,7 +92,7 @@ export default function PageProfileUmkm() {
                       "Minuman campuran yang menggabungkan kopi, susu, dan bubuk teh hijau matcha.",
                   })
                 }
-              />
+              />{" "}
             </motion.div>
           ))}
         </motion.div>
@@ -105,6 +104,7 @@ export default function PageProfileUmkm() {
     </AnimatePresence>
   );
 
+  const exampleUmkm = dataUmkm.filter((data) => data.id === 16);
   return (
     <div className="m-[5px] mt-[20px] mb-[20px]">
       <AnimatePresence mode="wait">
@@ -180,13 +180,14 @@ export default function PageProfileUmkm() {
                 className="lg:col-span-1 order-1"
               >
                 <CardInfoUmkm
-                  kategori="Makanan"
-                  namaUmkm="Nama UMKM"
-                  owner="Bahlil Tanoesoedibjo"
-                  lokasi="Rembang, Jawa Tengah"
-                  phone="+62 812-3456-7890"
-                  email="bahlil@gmail.com"
+                  kategori={exampleUmkm[0].kategori}
+                  namaUmkm={exampleUmkm[0].nama}
+                  owner="Fulan"
+                  lokasi="Kudus, Gebog, Besito"
+                  phone={exampleUmkm[0].phone}
+                  email={exampleUmkm[0].email}
                   onEdit={HandleEditUmkm}
+                  fotoUmkm={exampleUmkm[0].gambar}
                 />
               </motion.div>
 

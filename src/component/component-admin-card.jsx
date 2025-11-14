@@ -58,7 +58,7 @@ function CardInfoUmkm({
           <Button
             variant="outlined"
             className="w-full !py-2 mt-2 text-sm font-medium"
-            href={"/umkm/3"}
+            href={"/umkm/16"}
           >
             <FiEye className="size-[20px] justify-center" />
             Lihat Profil UMKM
