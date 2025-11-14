@@ -19,7 +19,7 @@ function CardProductAdmin({ foto, nama, harga, deskripsi, onEdit, onDelete }) {
           <p className="text-[#2563EB] font-medium text-sm mt-1">
             {harga || "Rp 20.000"}
           </p>
-          <p className="text-gray-500 text-sm mt-1 leading-snug line-clamp-2">
+          <p className="text-gray-500 text-sm mt-1 leading-snug line-clamp-2 text-justify">
             {deskripsi ||
               "Nikmati cita rasa kopi susu matcha yang menggabungkan kopi, susu, dan bubuk teh hijau matcha."}
           </p>

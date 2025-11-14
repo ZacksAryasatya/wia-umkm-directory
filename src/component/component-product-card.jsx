@@ -13,7 +13,7 @@ function ProductCard({fotoProduct, namaProduct, hargaProduct, deskripsiProduct})
         <h3 className="text-[15px] font-medium text-[#2563EB] mb-2">
           {hargaProduct != undefined ? `Rp. ${hargaProduct.toLocaleString('id-ID')}` : "Rp. 0"}
         </h3>
-        <p className="text-[13px] text-gray-500 leading-snug">
+        <p className="text-[13px] text-gray-500 leading-snug text-justify">
           {deskripsiProduct || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "}
         </p>
       </div>
