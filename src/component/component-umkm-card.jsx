@@ -1,11 +1,19 @@
 import { FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-function UmkmCard({ id, fotoUmkm, namaUmkm, deskripsi, location, noHp, kategori}) {
+function UmkmCard({
+  id,
+  fotoUmkm,
+  namaUmkm,
+  deskripsi,
+  location,
+  noHp,
+  kategori,
+}) {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/umkm/${id}`);
-  }
+  };
   return (
     <div
       className="bg-white rounded-[30px] shadow-md overflow-hidden w-full max-w-sm mx-auto border border-[#C1D0E1] hover:scale-105 hover:-translate-y-2 hover:shadow-xl duration-500 cursor-pointer"
@@ -21,22 +29,26 @@ function UmkmCard({ id, fotoUmkm, namaUmkm, deskripsi, location, noHp, kategori}
       />
 
       <div className="p-5">
-        <h2 className="text-xl font-bold mb-2">{namaUmkm || "Nama UMKM"}</h2>
+        <h2 className="text-xl font-bold mb-2">
+          {namaUmkm ?  namaUmkm.length > 20 ? `${namaUmkm.slice(0,20)} ...` : namaUmkm : "Nama Umkm"}
+        </h2>
 
         <button className="border border-[#C1D0E1] rounded-full px-4 py-1 text-sm font-semibold mb-3 hover:bg-gray-50 transition">
           {kategori || "kategori"}
         </button>
 
-        <p className="text-gray-500 text-sm mb-5 leading-relaxed text-justify">
-          {deskripsi ||
-            `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.`}
+        <p className="text-gray-500 text-sm mb-2 leading-relaxed text-justify">
+          {deskripsi
+            ? `${deskripsi.slice(0, 60)} ...`
+            : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, omnis deserunt! Ratione ipsam,"}
         </p>
 
         <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 border-t border-gray-200 pt-3">
           <div className="flex items-center gap-1">
             <FaMapMarkerAlt className="text-blue-500" />
-            <span>{location || "Kecamatan, Kota"}</span>
+            <span>
+              {location ? `${location.slice(0, 15)}..` : "Kecamatan, Kota"}
+            </span>
           </div>
           <div className="flex items-center gap-1">
             <FaWhatsapp className="text-green-500" />

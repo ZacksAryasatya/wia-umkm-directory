@@ -64,7 +64,7 @@ function Navbar() {
           <div className="flex gap-3">
             {isLoggedIn ? (
               <Link to={"/profile-umkm"}>
-                <FaRegUserCircle className="text-[#1B54D0]" size={30} />
+                <FaRegUserCircle className="text-[#1B54D0]" size={30} width={0.5}/>
               </Link>
             ) : (
               <>
