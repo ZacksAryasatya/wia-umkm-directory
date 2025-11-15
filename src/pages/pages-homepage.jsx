@@ -100,7 +100,7 @@ function HomePage() {
       </motion.section>
       <motion.section
         id="umkmSection"
-        className="bg-white shadow-[inset_0_1px_3px_#C1D0E1] rounded-t-[50px] mt-10 px-6 lg:px-[100px] py-25"
+        className="bg-white shadow-[inset_0_1px_3px_#C1D0E1] lg:rounded-t-[50px] rounded-t-[25px] mt-10 px-6 lg:px-[100px] py-25"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0 }}
@@ -152,7 +152,7 @@ function HomePage() {
         variants={fadeInUp}
       >
         <div className="w-full lg:w-1/2 lg:text-left mb-10 lg:mb-0">
-          <motion.h1 className="font-display text-black text-3xl lg:text-[42px] font-bold leading-tight" variants={fadeInUp}>
+          <motion.h1 className="font-display text-black text-3xl lg:text-[42px] font-bold leading-tight text-justify" variants={fadeInUp}>
             Tingkatkan Jangkauan <br className="hidden lg:block" />
             Bisnismu Sekarang
           </motion.h1>
